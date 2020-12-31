@@ -4,46 +4,121 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="bootstrap.css" />
     <script async src="https://kit.fontawesome.com/23eb318271.js" crossorigin="anonymous"></script>
     <script async src="index.js"></script>
-    <script async src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script async src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script async src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
     <title>Orinoco</title>
 </head>
+
 <body>
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="index.html">Orinoco</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Accueil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="panier.html">Panier</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+        <nav class="navbar navbar-expand-md navbar-dark bg-oricono">
+            <a class="navbar-brand font-weight-normal h1 ml-2" href="index.html">Orinoco</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="panier.html">Panier</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
-    <main role="main">
+    <main role="main" class="container mt-5">
+        <div class="m-10">
+            <h1 class="h1color text-center">#Découvrez notre gamme de caméra vintage</h1>
+        </div>
 
-      <div class="container marketing">
+        <div class="container mt-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-center">
+                <div class="col mb-5">
+                    <div id="camera1" class="camera card">
+                        <div class="prixcard">
+                            <span>260€</span>
+                        </div>
+                        <img src="images/vcam_1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Olympus</h5>
+                            <button class="btn bg-oricono text-white btndescription" type="button">Voir la description</button>
+                        </div>
+                    </div>
+                </div>
 
-      </div>
+                <div class="col mb-5">
+                    <div id="camera2" class="camera card">
+                        <div class="prixcard">
+                            <span>190€</span>
+                        </div>
+                        <img src="images/vcam_2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">kodak</h5>
+                            <button class="btn bg-oricono text-white btndescription" type="button">Voir la description</button>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col mb-5">
+                    <div id="camera3" class="camera card">
+                        <div class="prixcard">
+                            <span>420€</span>
+                        </div>
+                        <img src="images/vcam_3.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Minolta XG 7</h5>
+                            <button class="btn bg-oricono text-white btndescription" type="button">Voir la description</button>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- FOOTER -->
-      <footer class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2020 Orinoco.</p>
-      </footer>
+                <div class="col mb-5">
+                    <div id="camera4" class="camera card">
+                        <div class="prixcard">
+                            <span>300€</span>
+                        </div>
+                        <img src="images/vcam_4.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Zorki</h5>
+                            <button class="btn bg-oricono text-white btndescription" type="button">Voir la description</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col mb-5">
+                    <div id="camera5" class="camera card">
+                        <div class="prixcard">
+                            <span>380€</span>
+                        </div>
+                        <img src="images/vcam_5.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Fujitsu</h5>
+                            <button class="btn bg-oricono text-white btndescription" type="button">Voir la description</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="container mt-5">
+            <p class="float-right h1color"><a href="#">Back to top</a></p>
+            <p>&copy; 2020 Orinoco.</p>
+        </footer>
     </main>
 
-  </body>
+</body>
+
 </html>
