@@ -1957,7 +1957,7 @@ pre code {
 
 .form-control {
   display: block;
-  width: 100%;
+  width: 71px;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
   font-size: 1.1rem;
@@ -9600,6 +9600,7 @@ button.bg-dark:focus {
 
 .text-center {
   text-align: center !important;
+  text-align: -webkit-center;
 }
 
 @media (min-width: 576px) {

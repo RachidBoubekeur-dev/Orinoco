@@ -8,12 +8,6 @@
     <link rel="stylesheet" href="bootstrap.css" />
     <script async src="https://kit.fontawesome.com/23eb318271.js" crossorigin="anonymous"></script>
     <script async src="index.js"></script>
-    <script async src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script async src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
     <title>Orinoco</title>
 </head>
 
@@ -40,76 +34,63 @@
 
     <main role="main" class="container mt-5">
         <div class="m-10">
-            <h1 class="h1color text-center">#Découvrez notre gamme de caméra vintage</h1>
+            <h1 id="title" class="h1color text-center">#Découvrez notre gamme de caméra vintage</h1>
         </div>
 
         <div class="container mt-5">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-center">
-                <div class="col mb-5">
-                    <div id="camera1" class="camera card">
-                        <div class="prixcard">
-                            <span>260€</span>
-                        </div>
-                        <img src="images/vcam_1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Olympus</h5>
-                            <button class="btn bg-oricono text-white btndescription" type="button">Voir la description</button>
-                        </div>
-                    </div>
-                </div>
+            <div id="listCam" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-center">
+            </div>
+        </div>
 
-                <div class="col mb-5">
-                    <div id="camera2" class="camera card">
-                        <div class="prixcard">
-                            <span>190€</span>
-                        </div>
-                        <img src="images/vcam_2.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">kodak</h5>
-                            <button class="btn bg-oricono text-white btndescription" type="button">Voir la description</button>
-                        </div>
+        <div id="pageCam" class="card text-center">
+            <div class="card text-md-left">
+                <div class="row no-gutters">
+                    <div class="col-md-5 d-flex align-items-center">
+                        <img id="imageCam" src="" class="card-img" alt="">
                     </div>
-                </div>
-
-                <div class="col mb-5">
-                    <div id="camera3" class="camera card">
-                        <div class="prixcard">
-                            <span>420€</span>
-                        </div>
-                        <img src="images/vcam_3.jpg" class="card-img-top" alt="...">
+                    <div class="col-md-7 pl-3">
                         <div class="card-body">
-                            <h5 class="card-title">Minolta XG 7</h5>
-                            <button class="btn bg-oricono text-white btndescription" type="button">Voir la description</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col mb-5">
-                    <div id="camera4" class="camera card">
-                        <div class="prixcard">
-                            <span>300€</span>
-                        </div>
-                        <img src="images/vcam_4.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Zorki</h5>
-                            <button class="btn bg-oricono text-white btndescription" type="button">Voir la description</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col mb-5">
-                    <div id="camera5" class="camera card">
-                        <div class="prixcard">
-                            <span>380€</span>
-                        </div>
-                        <img src="images/vcam_5.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Fujitsu</h5>
-                            <button class="btn bg-oricono text-white btndescription" type="button">Voir la description</button>
+                            <p class="closePageCamP text-right"><span id="closePageCam">&times;</span></p>
+                            <h1 id="nameCam" class="card-title mb-5 mt-4 h1color"></h1>
+                            <h4 id="descriptionCam" class="card-text font-weight-light mb-5"></h4>
+                            <span class="card-text"><i class="fas fa-check h1color"></i> Livraison en en 12-15 jours
+                                ouvrables</span><br />
+                            <span class="card-text"><i class="fas fa-check h1color"></i> Livraison Gratuite et Garantie
+                                14 jours Satisfait ou Remboursé</span><br />
+                            <span class="card-text"><i class="fas fa-check h1color"></i> Inclus 2 ans de Garantie
+                                France</span><br />
+                            <span class="card-text"><i class="fas fa-check h1color"></i> En stock</span>
+                            <div class="d-md-flex align-items-center mt-5 mb-md-5">
+                                <h1 id="priceCam" class="card-text h1color mb-4 mb-md-0 mr-md-auto"></h1>
+                                <div class="input-group ml-1 mb-5 mb-md-0 w-auto">
+                                    <select id="lensesCam" class="custom-select" id="inputGroupSelect02">
+                                        <option selected>Lentilles...</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <label class="input-group-text bg-oricono text-white"
+                                            for="inputGroupSelect02">Options</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-md-flex align-items-center mt-md-5 mb-5">
+                                <input id="quantityCam" class="form-control mb-3 mb-md-0 mls-md-3 mt-4" type="number"
+                                    value="1" min="1" max="10" />
+                                <button class="btn bg-oricono text-white ml-auto mr-3 mt-3 ajoutPanier"
+                                    type="button">Ajoutez au panier</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div id="infoPanier" class="card bg-oricono fixed-bottom text-right ml-sm-1 ml-md-3 mb-3 col-sm-10 col-md-6 col-lg-5 col-xl-3">
+            <a href="panier.html" class="text-decoration-none text-white">
+                <div class="card-body">
+                    <span id="closeInfoPanier" class="mr-2 d-none d-md-inline-block">&times;</span>
+                    <p id="textInfoPanier" class="card-title text-center"></p>
+                </div>
+            </a>
         </div>
 
         <!-- FOOTER -->
@@ -119,6 +100,13 @@
         </footer>
     </main>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
