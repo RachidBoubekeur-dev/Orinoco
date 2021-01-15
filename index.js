@@ -122,12 +122,15 @@ let functionClosePageCam = function () {
 let ajoutPanier = document.querySelector('.ajoutPanier');
 
 ajoutPanier.addEventListener('click', function () {
+    let optionCam = document.querySelector("#lensesCam").value;
     let idPanier = ajoutPanier.getAttribute("id");
     getCamera(idPanier).then(function (camera) {
 
         for (let i = 0; i < quantityCam.value; i++) {
             let numberPanier = "Panier " + localStorage.length;
-            localStorage.setItem(numberPanier, camera._id)
+            let lensesPanier = "Lense " + camera._id;
+            localStorage.setItem(numberPanier, camera._id);
+            localStorage.setItem(lensesPanier, optionCam);
         }
 
         functionClosePageCam();
@@ -155,7 +158,7 @@ ajoutPanier.addEventListener('click', function () {
 
 
     }).catch(function () {
-        console.error('iuniu');
+        document.querySelector('#listCam').innerHTML = '<h1 class=\"h1color text-center mb-5\">Error 404</h1>';
     });
 });
 
