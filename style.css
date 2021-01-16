@@ -66,7 +66,7 @@
     padding-right: 5px;
     border-radius: 3px;
     font-size: 23px;
-    background: linear-gradient(to right, #d86505, 23%, #6f42c1);
+    animation: effetOricono 5s backwards infinite alternate;
 }
 
 .btndescription {
@@ -120,14 +120,14 @@
     display: none;
     opacity: 0;
     font-size: 19px;
+    animation: effetOricono 5s backwards infinite alternate;
     transition: all 0.6s;
 }
 
 #formPanier {
     background: linear-gradient(to right, #d86505, 23%, #6f42c1);
-    padding-top: 8px;
+    padding: 8px;
     border-radius: 12px;
-    padding-bottom: 8px;
     display: none;
     opacity: 0;
     transition: all 0.6s;
@@ -135,7 +135,7 @@
 
 #formPanier > form {
     background: white;
-    width: 98.7%;
+    width: 100%;
     border-radius: 6px;
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -143,6 +143,20 @@
 
 #formPanier > form > h1 {
     margin-top: -35px;
+}
+
+.divFormPanier:nth-of-type(1) {
+    margin-right: 3rem;
+}
+
+.divFormPanier:nth-of-type(2) {
+    margin-left: 3rem;
+}
+
+.divFormPanier:nth-of-type(3) {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .w-280 {
@@ -159,7 +173,6 @@
     border-radius: 3px 0px 32px 3px;
     margin-left: 80%;
     margin-top: 45px;
-    margin-right: -7px;
     margin-bottom: -20px;
 }
 
@@ -171,6 +184,24 @@
 
 .errorinput {
     display: none;
+}
+
+@keyframes effetOricono {
+    0% {
+        background:  #e27c29;
+    }
+
+    25% {
+        background: #cc5dcc;
+    }
+    
+    50% {
+        background: #a842c1;
+    }
+
+    100% {
+        background: #754bc4;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -199,6 +230,34 @@
         display: inline-block;
         margin-right: 12%;
         margin-left: 12%;
+    }
+
+    .divFormPanier:nth-of-type(1) {
+        margin-right: 0.5rem !important;
+        margin-left: 0.5rem !important;
+    }
+
+    .divFormPanier:nth-of-type(2) {
+        margin-left: 0.5rem !important;
+        margin-right: 0.5rem !important;
+    }
+
+    .w-280 {
+        width: 200px !important;
+    }
+}
+
+@media screen and (max-width: 991.5px) {
+    .divFormPanier:nth-of-type(1) {
+        margin-right: 1rem;
+    }
+
+    .divFormPanier:nth-of-type(2) {
+        margin-left: 1rem;
+    }
+
+    .divOriconobtn {
+        margin-left: 41%;
     }
 }
 

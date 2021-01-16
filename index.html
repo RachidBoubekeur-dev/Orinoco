@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="bootstrap.css" />
+    <script async src="https://kit.fontawesome.com/23eb318271.js" crossorigin="anonymous"></script>
     <script async src="index.js"></script>
     <title>Orinoco</title>
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-oricono">
+        <div class="navbar navbar-expand-md navbar-dark bg-oricono">
             <a class="navbar-brand font-weight-normal h1 ml-2" href="index.html">Orinoco</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <nav class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active mr-3">
                         <a class="nav-link" href="index.html">Accueil</a>
@@ -27,19 +28,17 @@
                         <a class="nav-link" href="panier.html">Panier</a>
                     </li>
                 </ul>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
 
-    <main role="main" class="container mt-5">
-        <div class="m-10">
-            <h1 id="title" class="h1color text-center">#Découvrez notre gamme de caméra vintage</h1>
-        </div>
+    <main class="container mt-5">
 
-        <div class="container mt-5">
+        <section class="container mt-5">
+            <h1 id="title" class="h1color text-center m-10">#Découvrez notre gamme de caméra vintage</h1>
             <div id="listCam" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-center">
             </div>
-        </div>
+        </section>
 
         <div id="pageCam" class="card text-center">
             <div class="card text-md-left">
@@ -48,9 +47,9 @@
                         <img id="imageCam" src="" class="card-img" alt="">
                     </div>
                     <div class="col-md-7 pl-3">
-                        <div class="card-body">
+                        <article class="card-body">
                             <p class="closePageCamP text-right"><span id="closePageCam">&times;</span></p>
-                            <h1 id="nameCam" class="card-title mb-5 mt-4 h1color"></h1>
+                            <h2 id="nameCam" class="card-title mb-5 mt-4 h1color h1 font-weight-normal"></h2>
                             <h4 id="descriptionCam" class="card-text font-weight-light mb-5"></h4>
                             <span class="card-text"><i class="fas fa-check h1color"></i> Livraison en en 12-15 jours
                                 ouvrables</span><br />
@@ -60,9 +59,10 @@
                                 France</span><br />
                             <span class="card-text"><i class="fas fa-check h1color"></i> En stock</span>
                             <div class="d-md-flex align-items-center mt-5 mb-md-5">
-                                <h1 id="priceCam" class="card-text h1color mb-4 mb-md-0 mr-md-auto"></h1>
+                                <h2 id="priceCam"
+                                    class="card-text h1color mb-4 mb-md-0 mr-md-auto h1 font-weight-normal"></h2>
                                 <div class="input-group ml-1 mb-5 mb-md-0 w-auto">
-                                    <select id="lensesCam" class="custom-select" id="inputGroupSelect02">
+                                    <select id="lensesCam" class="custom-select" name="inputGroupSelect02">
                                         <option selected>Lentilles...</option>
                                     </select>
                                     <div class="input-group-append">
@@ -77,13 +77,14 @@
                                 <button class="btn bg-oricono text-white ml-auto mr-3 mt-3 ajoutPanier"
                                     type="button">Ajoutez au panier</button>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="infoPanier" class="card bg-oricono fixed-bottom text-right ml-sm-1 ml-md-3 mb-3 col-sm-10 col-md-6 col-lg-5 col-xl-3">
+        <div id="infoPanier"
+            class="card fixed-bottom text-right ml-sm-1 ml-md-3 mb-3 col-sm-10 col-md-6 col-lg-5 col-xl-3">
             <a href="panier.html" class="text-decoration-none text-white">
                 <div class="card-body pl-0 pr-0">
                     <span id="closeInfoPanier" class="mr-2 d-none d-md-inline-block">&times;</span>

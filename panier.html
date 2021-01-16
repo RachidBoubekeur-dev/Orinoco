@@ -13,13 +13,13 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-oricono">
+        <div class="navbar navbar-expand-md navbar-dark bg-oricono">
             <a class="navbar-brand font-weight-normal h1 ml-2" href="index.html">Orinoco</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <nav class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active mr-3">
                         <a class="nav-link" href="index.html">Accueil</a>
@@ -28,51 +28,51 @@
                         <a class="nav-link" href="panier.html">Panier</a>
                     </li>
                 </ul>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
 
-    <main role="main" class="container mt-5">
-        <div class="m-10">
-            <h1 id="title" class="h1color text-center">#Votre Panier est vide</h1>
-        </div>
+    <main class="container mt-5">
+        <section class="m-10">
+            <h2 id="title" class="h1color text-center h1 font-weight-normal">#Votre Panier est vide</h2>
+        </section>
 
         <div id="listPanier" class="flex-column align-items-center">
         </div>
 
-        <div id="formPanier" class="justify-content-center">
+        <div id="formPanier" class="justify-content-center col-12">
             <form class="text-center">
                 <p class="closePageCamP2 text-right mr-4"><span id="closePageCam">&times;</span></p>
                 <h1 class="text-center h1color font-weight-lighter mb-5">Formulaire de contact</h1>
-                <div class="form-group d-inline-flex flex-column mr-5 mt-3 text-left">
+                <div class="divFormPanier form-group d-inline-flex flex-column mt-3 text-left">
                     <label for="InputNom" class="h5 h1color">Votre Nom :</label>
-                    <input type="text" class="form-control w-280 inputform" id="InputNom" aria-describedby="nomHelp"
+                    <input type="text" class="form-control w-280 inputform" id="InputNom" aria-describedby="InputNom"
                         placeholder="Entrer votre nom" required>
                         <span id="ErrorInputNom" class="h1color text-center errorinput"></span>
 
                     <label for="InputPrenom" class="h5 h1color mt-4">Votre Prénom :</label>
-                    <input type="text" class="form-control w-280 inputform" id="InputPrenom" aria-describedby="prenomHelp"
+                    <input type="text" class="form-control w-280 inputform" id="InputPrenom" aria-describedby="InputPrenom"
                         placeholder="Entrer votre prénom" required>
                         <span id="ErrorInputPrenom" class="h1color text-center errorinput"></span>
 
                     <label for="InputAdresse" class="h5 h1color mt-4">Votre Adresse :</label>
-                    <input type="text" class="form-control w-280 inputform" id="InputAdresse" aria-describedby="adresseHelp"
+                    <input type="text" class="form-control w-280 inputform" id="InputAdresse" aria-describedby="InputAdresse"
                         placeholder="Entrer votre adresse" required>
                         <span id="ErrorInputAdresse" class="h1color text-center errorinput"></span>
                 </div>
-                <div class="form-group d-inline-flex flex-column ml-5 text-left">
+                <div class="divFormPanier form-group d-inline-flex flex-column text-left">
                     <label for="InputVille" class="h5 h1color">Votre Ville :</label>
-                    <input type="text" class="form-control w-280 inputform" id="InputVille" aria-describedby="VilleHelp"
+                    <input type="text" class="form-control w-280 inputform" id="InputVille" aria-describedby="InputVille"
                         placeholder="Entrer votre ville" required>
                         <span id="ErrorInputVille" class="h1color text-center errorinput"></span>
 
                     <label for="InputEmail" class="h5 h1color mt-4">Votre Email :</label>
-                    <input type="email" class="form-control w-280 inputform" id="InputEmail" aria-describedby="EmailHelp"
+                    <input type="email" class="form-control w-280 inputform" id="InputEmail" aria-describedby="InputEmail"
                         placeholder="Entrer votre email" required>
                         <span id="ErrorInputEmail" class="h1color text-center inputform"></span>
                 </div>
-                <div class="custom-control custom-checkbox mb-3 mt-4">
-                    <input type="checkbox" class="custom-control-input position-relative" id="InputCheck" aria-describedby="checkHelp"
+                <div class="divFormPanier custom-control custom-checkbox mb-3 mt-4">
+                    <input type="checkbox" class="custom-control-input position-relative" id="InputCheck" aria-describedby="InputCheck"
                         required>
                     <label for="InputCheck" class="custom-control-label h1color font-weight-bolder">J'accepter les conditions générales de
                         vente</label>
@@ -85,14 +85,14 @@
             </form>
         </div>
 
-        <div class="d-flex m-10">
-            <h1 id="buttonCommander" class="h1color pointer"></h1>
+        <section class="d-flex m-10 flex-wrap-reverse">
+            <h2 id="buttonCommander" class="h1color pointer h1 font-weight-normal"></h2>
 
             <div class="ml-auto">
                 <p class="h5 mb-4">Prix total de votre panier : </p>
-                <h1 id="prixTotalPanier" class="h1color text-right">0€</h1>
+                <h2 id="prixTotalPanier" class="h1color text-right h1 font-weight-normal">0€</h2>
             </div>
-        </div>
+        </section>
 
         <!-- FOOTER -->
         <footer class="container mt-5">

@@ -100,7 +100,7 @@ getListCamera().then(function (listCamera) {
     let htmlListPanier = "";
     for (let i = 0; i < arrayPanier.length; i++) {
 
-        htmlListPanier += "<div id=\"card" + arrayPanier[i].id + "\" class=\"cardPanier card col-11 col-md-12 p-0 mb-3 text-center\"><div class=\"card-body d-md-flex justify-content-between align-items-center p-0\"><img id=\"imageCam" + i + "\" class=\"w-110 w100Img max-hImg\" src=\"" + arrayPanier[i].imageUrl + "\" alt=\"Caméra " + arrayPanier[i].name + "\"><h3 id=\"nameCam" + i + "\" class=\"card-title h1color mt-3 mt-md-2 namecardPanier\">" + arrayPanier[i].name + "</h3><div class=\"widthElement\"><p id=\"optionCam" + i + "\" class=\"h1color pt-3 mt-3 mt-md-2\" title=\"Option lentille : " + arrayPanier[i].lense + "\">" + arrayPanier[i].lense + "</p></div><h3 id=\"priceCam" + i + "\" class=\"card-title h1color mt-2 prixcardPanier\"></h3><input id=\"quantityCam" + i + "\" class=\"quantityCamPanier form-control d-inline-block\" type=\"number\" value=\"" + arrayPanier[i].number + "\" min=\"1\" max=\"100\"><i id=\"deleteCam" + i + "\" class=\"fas fa-trash-alt h1color h5 mt-2 mr-md-5 pointer\"></i></div></div>";
+        htmlListPanier += "<div id=\"card" + arrayPanier[i].id + "\" class=\"cardPanier card col-11 col-md-12 p-0 mb-3 text-center\"><article class=\"card-body d-md-flex justify-content-between align-items-center p-0\"><img id=\"imageCam" + i + "\" class=\"w-110 w100Img max-hImg\" src=\"" + arrayPanier[i].imageUrl + "\" alt=\"Caméra " + arrayPanier[i].name + "\"><h3 id=\"nameCam" + i + "\" class=\"card-title h1color mt-3 mt-md-2 namecardPanier\">" + arrayPanier[i].name + "</h3><div class=\"widthElement\"><p id=\"optionCam" + i + "\" class=\"h1color pt-3 mt-3 mt-md-2\" title=\"Option lentille : " + arrayPanier[i].lense + "\">" + arrayPanier[i].lense + "</p></div><h3 id=\"priceCam" + i + "\" class=\"card-title h1color mt-2 prixcardPanier\"></h3><input id=\"quantityCam" + i + "\" class=\"quantityCamPanier form-control d-inline-block\" type=\"number\" value=\"" + arrayPanier[i].number + "\" min=\"1\" max=\"100\"><i id=\"deleteCam" + i + "\" class=\"fas fa-trash-alt h1color h5 mt-2 mr-md-5 pointer\"></i></article></div>";
     }
 
     document.querySelector('#listPanier').innerHTML = htmlListPanier;
@@ -387,5 +387,5 @@ getListCamera().then(function (listCamera) {
     });
 
 }).catch(function () {
-    document.querySelector('#listPanier').innerHTML = '<h1 class=\"h1color text-center mb-5\">Error 404</h1>';
+    document.querySelector('#listPanier').innerHTML = '<h2 class=\"h1color text-center mb-5\">Error 404</h2>';
 });

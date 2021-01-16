@@ -51,7 +51,7 @@ getListCamera().then(function (listCamera) {
             newPrice += "," + price.substr(3, 2);
         }
 
-        listCameraHtml += "<div class=\"col mb-5\"><div id=\"" + listCamera[i]._id + "\" class=\"camera card\"><div class=\"prixcard\"><span>" + newPrice + "€</span></div><img src=\"" + listCamera[i].imageUrl + "\" class=\"card-img-top\" alt=\"Caméra " + listCamera[i].name + "\"><div class=\"card-body\"><h5 class=\"card-title\">" + listCamera[i].name + "</h5><button class=\"btn bg-oricono text-white btndescription\" type=\"button\">Voir la description</button></div></div></div>";
+        listCameraHtml += "<div class=\"col mb-5\"><figure id=\"" + listCamera[i]._id + "\" class=\"camera card\"><div class=\"prixcard\"><span>" + newPrice + "€</span></div><img src=\"" + listCamera[i].imageUrl + "\" class=\"card-img-top\" alt=\"Caméra " + listCamera[i].name + "\"><figcaption class=\"card-body\"><h5 class=\"card-title\">" + listCamera[i].name + "</h5><span class=\"h1color\">Voir la description</span></figcaption></figure></div>";
     };
 
     document.querySelector('#listCam').innerHTML = listCameraHtml;
@@ -59,11 +59,11 @@ getListCamera().then(function (listCamera) {
     functionDivCam();
 
 }).catch(function () {
-    document.querySelector('#listCam').innerHTML = '<h1 class=\"h1color text-center mb-5\">Error 404</h1>';
+    document.querySelector('#listCam').innerHTML = '<h2 class=\"h1color text-center mb-5\">Error 404</h2>';
 });
 
 let functionDivCam = function () {
-    let divCam = document.querySelectorAll('div.camera');
+    let divCam = document.querySelectorAll('figure.camera');
     for (let i = 0; i < divCam.length; i++) {
         let cam = divCam[i];
         cam.addEventListener('click', function () {
@@ -99,7 +99,7 @@ let functionDivCam = function () {
                 setTimeout(function () { pageCam.style.opacity = 1; }, 60);
 
             }).catch(function () {
-                document.querySelector('#listCam').innerHTML = '<h1 class=\"h1color text-center mb-5\">Error 404</h1>';
+                document.querySelector('#listCam').innerHTML = '<h2 class=\"h1color text-center mb-5\">Error 404</h2>';
             });
         });
     }
@@ -158,7 +158,7 @@ ajoutPanier.addEventListener('click', function () {
 
 
     }).catch(function () {
-        document.querySelector('#listCam').innerHTML = '<h1 class=\"h1color text-center mb-5\">Error 404</h1>';
+        document.querySelector('#listCam').innerHTML = '<h2 class=\"h1color text-center mb-5\">Error 404</h2>';
     });
 });
 
