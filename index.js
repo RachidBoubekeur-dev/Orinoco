@@ -59,7 +59,7 @@ getListCamera().then(function (listCamera) {
     functionDivCam();
 
 }).catch(function () {
-    document.querySelector('#listCam').innerHTML = '<h2 class=\"h1color text-center mb-5\">Error 404</h2>';
+    document.querySelector('#listCam').innerHTML = '<h2 class=\"h1color text-center mb-5 h1\">Error 404</h2>';
 });
 
 let functionDivCam = function () {
@@ -99,7 +99,7 @@ let functionDivCam = function () {
                 setTimeout(function () { pageCam.style.opacity = 1; }, 60);
 
             }).catch(function () {
-                document.querySelector('#listCam').innerHTML = '<h2 class=\"h1color text-center mb-5\">Error 404</h2>';
+                document.querySelector('#listCam').innerHTML = '<h2 class=\"h1color text-center mb-5 h1\">Error 404</h2>';
             });
         });
     }
@@ -158,7 +158,7 @@ ajoutPanier.addEventListener('click', function () {
 
 
     }).catch(function () {
-        document.querySelector('#listCam').innerHTML = '<h2 class=\"h1color text-center mb-5\">Error 404</h2>';
+        document.querySelector('#listCam').innerHTML = '<h2 class=\"h1color text-center mb-5 h1\">Error 404</h2>';
     });
 });
 

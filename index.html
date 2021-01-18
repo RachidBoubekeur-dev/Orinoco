@@ -40,14 +40,14 @@
             </div>
         </section>
 
-        <div id="pageCam" class="card text-center">
+        <section id="pageCam" class="card text-center">
             <div class="card text-md-left">
                 <div class="row no-gutters">
                     <div class="col-md-5 d-flex align-items-center">
                         <img id="imageCam" src="" class="card-img" alt="">
                     </div>
                     <div class="col-md-7 pl-3">
-                        <article class="card-body">
+                        <div class="card-body">
                             <p class="closePageCamP text-right"><span id="closePageCam">&times;</span></p>
                             <h2 id="nameCam" class="card-title mb-5 mt-4 h1color h1 font-weight-normal"></h2>
                             <h4 id="descriptionCam" class="card-text font-weight-light mb-5"></h4>
@@ -62,26 +62,26 @@
                                 <h2 id="priceCam"
                                     class="card-text h1color mb-4 mb-md-0 mr-md-auto h1 font-weight-normal"></h2>
                                 <div class="input-group ml-1 mb-5 mb-md-0 w-auto">
-                                    <select id="lensesCam" class="custom-select" name="inputGroupSelect02">
+                                    <select id="lensesCam" class="custom-select" aria-describedby="lensesCam" aria-label="Choisissez votre lentille">
                                         <option selected>Lentilles...</option>
                                     </select>
                                     <div class="input-group-append">
                                         <label class="input-group-text bg-oricono text-white"
-                                            for="inputGroupSelect02">Options</label>
+                                            for="lensesCam">Options</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="d-md-flex align-items-center mt-md-5 mb-5">
-                                <input id="quantityCam" class="form-control mb-3 mb-md-0 mls-md-3 mt-4" type="number"
+                                <input id="quantityCam" aria-describedby="quantityCam" aria-label="Choisissez le nombre de caméra à ajouter dans votre panier" class="form-control mb-3 mb-md-0 mls-md-3 mt-4" type="number"
                                     value="1" min="1" max="10" />
                                 <button class="btn bg-oricono text-white ml-auto mr-3 mt-3 ajoutPanier"
                                     type="button">Ajoutez au panier</button>
                             </div>
-                        </article>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <div id="infoPanier"
             class="card fixed-bottom text-right ml-sm-1 ml-md-3 mb-3 col-sm-10 col-md-6 col-lg-5 col-xl-3">
@@ -96,7 +96,7 @@
         <!-- FOOTER -->
         <footer class="container mt-5 ">
             <p class="float-right h1color"><a href="#">Back to top</a></p>
-            <p>&copy; 2020 Orinoco.</p>
+            <p>&copy; 2021 Orinoco.</p>
         </footer>
     </main>
 
