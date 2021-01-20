@@ -18,38 +18,11 @@ let getXhr = function (url) {
     });
 };
 
-let postXhr = function (url, contact, arrayIdCamera) {
-    return new Promise(function (resolve, reject) {
-
-        let xhr = new XMLHttpRequest();
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    resolve(xhr.responseText);
-                } else {
-                    reject(xhr);
-                }
-            }
-        }
-
-        xhr.open('POST', url);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send(contact, arrayIdCamera);
-    });
-};
-
+// Demande la liste des caméras
 let getListCamera = function () {
     return getXhr('http://localhost:3000/api/cameras').then(function (response) {
         let listCamera = JSON.parse(response);
         return listCamera;
-    });
-};
-
-let postOrder = function (contact, arrayIdCamera) {
-    return postXhr('http://localhost:3000/api/cameras/order', contact, arrayIdCamera).then(function (response) {
-        let order = JSON.parse(response);
-        return order;
     });
 };
 
@@ -67,6 +40,8 @@ class Panier {
 getListCamera().then(function (listCamera) {
     let arrayPanier = [];
 
+    localStorage.removeItem('click Camera');
+    // Récupération des produits ajouter au panier dans le localStorage
     for (let i = 0; i < localStorage.length; i++) {
 
         let panierId = localStorage.getItem(localStorage.key(i));
@@ -77,6 +52,7 @@ getListCamera().then(function (listCamera) {
 
                 let lenseOption = localStorage.getItem("Lense " + panierId);
 
+                // Ajouts du 1er produit dans arrayPanier
                 if (arrayPanier.length === 0) {
                     arrayPanier.push(new Panier(listCamera[y]._id, listCamera[y].name, listCamera[y].price, listCamera[y].imageUrl, lenseOption, 1));
                     break;
@@ -84,9 +60,11 @@ getListCamera().then(function (listCamera) {
                     for (let x = 0; x < arrayPanier.length; x++) {
 
                         if (arrayPanier[x].id === listCamera[y]._id) {
+                            // Si l'id est déjà présent dans le arrayPanier on ajoute + 1 au number de l'article
                             arrayPanier[x].number++;
                             break;
                         } else if (x + 1 === arrayPanier.length) {
+                            // Ajouts du produit dans arrayPanier
                             arrayPanier.push(new Panier(listCamera[y]._id, listCamera[y].name, listCamera[y].price, listCamera[y].imageUrl, lenseOption, 1));
                             break;
                         }
@@ -100,33 +78,39 @@ getListCamera().then(function (listCamera) {
     let htmlListPanier = "";
     for (let i = 0; i < arrayPanier.length; i++) {
 
+        // Ajout successif des caméras dans htmlListPanier
         htmlListPanier += "<div id=\"card" + arrayPanier[i].id + "\" class=\"cardPanier card col-11 col-md-12 p-0 mb-3 text-center\"><div class=\"card-body d-md-flex justify-content-between align-items-center p-0\"><img id=\"imageCam" + i + "\" class=\"w-110 w100Img max-hImg\" src=\"" + arrayPanier[i].imageUrl + "\" alt=\"Caméra " + arrayPanier[i].name + "\"><h3 id=\"nameCam" + i + "\" class=\"card-title h1color mt-3 mt-md-2 namecardPanier\">" + arrayPanier[i].name + "</h3><div class=\"widthElement\"><p id=\"optionCam" + i + "\" class=\"h1color pt-3 mt-3 mt-md-2\" title=\"Option lentille : " + arrayPanier[i].lense + "\">" + arrayPanier[i].lense + "</p></div><h3 id=\"priceCam" + i + "\" class=\"card-title h1color mt-2 prixcardPanier\"></h3><input id=\"quantityCam" + i + "\" class=\"quantityCamPanier form-control d-inline-block\" type=\"number\" value=\"" + arrayPanier[i].number + "\" min=\"1\" max=\"100\"><i id=\"deleteCam" + i + "\" class=\"fas fa-trash-alt h1color h5 mt-2 mr-md-5 pointer\"></i></div></div>";
     }
 
     document.querySelector('#listPanier').innerHTML = htmlListPanier;
 
+    // Function qui calcule et formate le prix à chaque appel
     let getPrice = function () {
         let prixTotalPanier = 0;
-        if (localStorage.length === 0) {
-            document.querySelector("#title").innerHTML = "#Votre Panier est vide";
-            document.querySelector('#buttonCommander').style.display = "none";
+
+        if (localStorage.length !== 0) {
+            document.querySelector("#title").innerHTML = "#Votre panier";
+            document.querySelector("#formPanier").style.display = "flex";
         } else {
-            document.querySelector("#title").innerHTML = "#Votre Panier";
-            document.querySelector('#buttonCommander').innerHTML = "Commander";
-            document.querySelector('#buttonCommander').style.display = "block";
+            document.querySelector("#title").innerHTML = "#Votre panier est vide";
+            document.querySelector("#formPanier").style.display = "none";
+            setTimeout(function () { document.location.href = "../index.html" }, 10000);
         }
 
         for (let i = 0; i < arrayPanier.length; i++) {
 
+            // Formate le prix
             let price = arrayPanier[i].price;
 
             price = price.toString().substr(0, 5);
 
+            // Calcule le prix en fonction de la quantité du même produit
             let prixTotalCam = parseInt(price, 10) * document.querySelector("#quantityCam" + i).value;
             prixTotalCam = prixTotalCam.toString();
 
             let newPrice = prixTotalCam;
 
+            // Formate le prix calculer
             prixTotalPanier = prixTotalPanier + parseInt(newPrice, 10);
 
             if (prixTotalCam.length === 5) {
@@ -154,6 +138,7 @@ getListCamera().then(function (listCamera) {
             document.querySelector("#priceCam" + i).innerHTML = newPrice + "€";
         }
 
+        // Formate le prix Total calculer
         prixTotalPanier = prixTotalPanier.toString();
         let newPrixTotalPanier;
 
@@ -189,16 +174,19 @@ getListCamera().then(function (listCamera) {
         let deleteCam = document.querySelector("#deleteCam" + i);
         let lenseOption = document.querySelector("#optionCam" + i);
 
-        if (arrayPanier[i].lense === "Lentilles...") {
+        if (arrayPanier[i].lense === "Lentilles..." || arrayPanier[i].lense === null) {
             lenseOption.parentNode.style.display = "none";
         }
 
         inputNumber.addEventListener('input', function () {
+
+            // À chaque nouvelle quantité on recalcule les prix
             arrayPanier[i].number = inputNumber.value;
             getPrice();
         });
 
         deleteCam.addEventListener('click', function () {
+            // Effet visuel lorsque que le produit est supprimé
             document.querySelector('#card' + arrayPanier[i].id).style.opacity = 0;
             document.querySelector('#card' + arrayPanier[i].id).style.marginLeft = "-50%";
             setTimeout(function () {
@@ -206,188 +194,71 @@ getListCamera().then(function (listCamera) {
                 heightDiv = heightDiv + 20;
                 document.querySelector('#card' + arrayPanier[i].id).style.marginTop = "-" + heightDiv + "px";
                 arrayPanier[i].price = 0;
+                // À chaque suppression on recalcule les prix
                 getPrice();
             }, 1400);
             setTimeout(function () {
                 document.querySelector('#card' + arrayPanier[i].id).style.display = "none";
             }, 3000);
 
+            // On supprime le produit de localStorage ainsi que son option de lentille
             for (let y = 0; y < localStorage.length; y++) {
                 let deletePanierId = localStorage.getItem(localStorage.key(y));
                 if (arrayPanier[i].id === deletePanierId) {
                     localStorage.removeItem(localStorage.key(y));
-                    localStorage.removeItem("Lense " + deletePanierId);
-                }
-            }
-
-            for (let y = 0; y < localStorage.length; y++) {
-                let deletePanierId = localStorage.getItem(localStorage.key(y));
-                if (arrayPanier[i].id === deletePanierId) {
-                    localStorage.removeItem(localStorage.key(y));
-                    localStorage.removeItem("Lense " + deletePanierId);
+                    y--;
+                    let lenseDelete = localStorage.getItem("Lense " + deletePanierId);
+                    if (lenseDelete !== null) {
+                        localStorage.removeItem("Lense " + deletePanierId);
+                        y--;
+                    }
                 }
             }
         });
     }
 
-    let buttonCommander = document.querySelector("#buttonCommander");
-    let listPanier = document.querySelector("#listPanier");
-    let formPanier = document.querySelector("#formPanier");
-    let closeFormPanier = document.querySelector("#closePageCam");
-
-    buttonCommander.addEventListener('click', function () {
-        buttonCommander.style.display = "none";
-        listPanier.style.opacity = 0;
-        setTimeout(function () {
-            listPanier.style.display = "none";
-            formPanier.style.display = "flex";
-        }, 600);
-
-        setTimeout(function () {
-            formPanier.style.opacity = 1;
-        }, 650);
-    });
-
-    closeFormPanier.addEventListener('click', function () {
-        formPanier.style.opacity = 0;
-        setTimeout(function () {
-            formPanier.style.display = "none";
-            listPanier.style.display = "flex";
-        }, 600);
-
-        setTimeout(function () {
-            listPanier.style.opacity = 1;
-        }, 650);
-        buttonCommander.style.display = "block";
-    });
-
-    let formInputNom = document.querySelector('#InputNom');
-    let ErrorInputNom = document.querySelector('#ErrorInputNom');
-
-    let formInputPrenom = document.querySelector('#InputPrenom');
-    let ErrorInputPrenom = document.querySelector('#ErrorInputPrenom');
-
-    let formInputAdresse = document.querySelector('#InputAdresse');
-    let ErrorInputAdresse = document.querySelector('#ErrorInputAdresse');
-
-    let formInputVille = document.querySelector('#InputVille');
-    let ErrorInputVille = document.querySelector('#ErrorInputVille');
-
-    let formInputEmail = document.querySelector('#InputEmail');
-    let ErrorInputEmail = document.querySelector('#ErrorInputEmail');
-
-    let formInputCheck = document.querySelector('#InputCheck');
-    let formBtnCommander = document.querySelector('#formBtnCommander');
-
-    let regexAlpha = /^[a-zA-Z]+$/;
-
-    let verifInputValid = [];
-
-    formInputNom.addEventListener('keyup', function () {
-        if (formInputNom.value.length >= 2 && regexAlpha.test(formInputNom.value)) {
-            formInputNom.style.border = "1px solid #ced4da";
-            ErrorInputNom.style.display = "none";
-            verifInputValid[0] = true;
-        } else {
-            formInputNom.style.border = "2px solid purple";
-            ErrorInputNom.textContent = "min 2 caractère valide";
-            ErrorInputNom.style.display = "block";
-            verifInputValid[0] = false;
-        }
-    })
-
-    formInputPrenom.addEventListener('keyup', function () {
-        if (formInputPrenom.value.length >= 2 && regexAlpha.test(formInputPrenom.value)) {
-            formInputPrenom.style.border = "1px solid #ced4da";
-            ErrorInputPrenom.style.display = "none";
-            verifInputValid[1] = true;
-        } else {
-            formInputPrenom.style.border = "2px solid purple";
-            ErrorInputPrenom.textContent = "min 2 caractère valide";
-            ErrorInputPrenom.style.display = "block";
-            verifInputValid[1] = false;
-        }
-    })
-
-    formInputAdresse.addEventListener('keyup', function () {
-        if (formInputAdresse.value.length >= 10) {
-            formInputAdresse.style.border = "1px solid #ced4da";
-            ErrorInputAdresse.style.display = "none";
-            verifInputValid[2] = true;
-        } else {
-            formInputAdresse.style.border = "2px solid purple";
-            ErrorInputAdresse.textContent = "min 10 caractère valide";
-            ErrorInputAdresse.style.display = "block";
-            verifInputValid[2] = false;
-        }
-    })
-
-    formInputVille.addEventListener('keyup', function () {
-        if (formInputVille.value.length >= 10 && regexAlpha.test(formInputVille.value)) {
-            formInputVille.style.border = "1px solid #ced4da";
-            ErrorInputVille.style.display = "none";
-            verifInputValid[3] = true;
-        } else {
-            formInputVille.style.border = "2px solid purple";
-            ErrorInputVille.textContent = "min 10 caractère valide";
-            ErrorInputVille.style.display = "block";
-            verifInputValid[3] = false;
-        }
-    })
-
-    formInputEmail.addEventListener('keyup', function () {
-        if (formInputEmail.value.length >= 8) {
-            formInputEmail.style.border = "1px solid #ced4da";
-            ErrorInputEmail.style.display = "none";
-
-            if (formInputEmail.validity.valid) {
-                formInputEmail.style.border = "1px solid #ced4da";
-                ErrorInputEmail.style.display = "none";
-                verifInputValid[4] = true;
-            } else {
-                formInputEmail.style.border = "2px solid purple";
-                ErrorInputEmail.textContent = "Email invalide";
-                ErrorInputEmail.style.display = "block";
-                verifInputValid[4] = false;
-            }
-
-        } else {
-            formInputEmail.style.border = "2px solid purple";
-            ErrorInputEmail.textContent = "min 8 caractère valide";
-            ErrorInputEmail.style.display = "block";
-        }
-    })
-
-    formBtnCommander.addEventListener('click', function () {
-        if (verifInputValid[0] === true && verifInputValid[1] === true && verifInputValid[2] === true && verifInputValid[3] === true && verifInputValid[4] === true) {
-            if (formInputCheck.checked) {
-                formInputCheck.parentNode.style.border = "none";
-
-                let contact = new Object();
-                contact.firstName = formInputPrenom.value;
-                contact.lastName = formInputNom.value;
-                contact.adresse = formInputAdresse.value;
-                contact.city = formInputVille.value;
-                contact.email = formInputEmail.value;
-
-                let arrayIdCamera = [];
-
-                for (let i = 0; i < arrayPanier; i++) {
-                    arrayIdCamera.push(arrayPanier[i].id);
-                }
-
-                postOrder(contact, arrayIdCamera).then(function (order) {
-                    alert('OK');
-                    console.log(order);
-                }).catch(function () {
-                    console.error('error');
-                });
-            } else {
-                formInputCheck.parentNode.style.border = "1px solid purple";
-            }
-        }
-    });
-
 }).catch(function () {
-    document.querySelector('#listPanier').innerHTML = '<h2 class=\"h1color text-center mb-5 h1\">Error 404</h2>';
+    // Gestions des erreurs: affiche Error 404 et redirige le visiteur vers la page d'accueil à partir de 10s
+    document.querySelector('#listPanier').innerHTML = '<h2 class=\"h1color text-center mb-5 h1 font-weight-normal\">Error 404</h2>';
+    setTimeout(function () { document.location.href = "../index.html" }, 10000);
+});
+
+document.querySelector('form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    // Si le formulaire est soumis et valide on récupère les infos et on les ajoute à l'object contact
+    let formInputNom = document.querySelector('#InputNom');
+    let formInputPrenom = document.querySelector('#InputPrenom');
+    let formInputAdresse = document.querySelector('#InputAdresse');
+    let formInputVille = document.querySelector('#InputVille');
+    let formInputEmail = document.querySelector('#InputEmail');
+
+    let contact = new Object();
+    contact.firstName = encodeURIComponent(formInputPrenom.value);
+    contact.lastName = encodeURIComponent(formInputNom.value);
+    contact.address = encodeURIComponent(formInputAdresse.value);
+    contact.city = encodeURIComponent(formInputVille.value);
+    contact.email = encodeURIComponent(formInputEmail.value);
+
+    // On ajoute les id de tous les produits ajouter au panier dans array products
+    let products = [];
+
+    for (let i = 0; i < localStorage.length; i++) {
+        let PanierId = localStorage.getItem("Panier " + i);
+        if (PanierId !== null) {
+            products.push(PanierId);
+        }
+    }
+
+    const dataOrder = {
+        contact,
+        products
+    };
+
+    let priceOrder = document.querySelector("#prixTotalPanier");
+
+    // On stock dataOrder et priceOrder dans le localStrorage
+    localStorage.setItem('Order', JSON.stringify(dataOrder));
+    localStorage.setItem('priceOrder', priceOrder.textContent);
+    // Redirection vers la page order pour le traitement de la commande
+    document.location.href = "order.html";
 });

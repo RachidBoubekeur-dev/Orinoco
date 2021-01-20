@@ -3,18 +3,18 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="bootstrap.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../bootstrap.css" />
     <script async src="https://kit.fontawesome.com/23eb318271.js" crossorigin="anonymous"></script>
-    <script async src="panier.js"></script>
+    <script async src="../js/panier.js"></script>
     <title>Panier - Orinoco</title>
 </head>
 
 <body>
     <header>
         <div class="navbar navbar-expand-md navbar-dark bg-oricono">
-            <a class="navbar-brand font-weight-normal h1 ml-2" href="index.html">Orinoco</a>
+            <a class="navbar-brand font-weight-normal h1 ml-2" href="../index.html">Orinoco</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
             <nav class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active mr-3">
-                        <a class="nav-link" href="index.html">Accueil</a>
+                        <a class="nav-link" href="../index.html">Accueil</a>
                     </li>
                     <li class="nav-item active mr-3">
                         <a class="nav-link" href="panier.html">Panier</a>
@@ -34,42 +34,50 @@
 
     <main class="container mt-5">
         <section class="m-10">
-            <h2 id="title" class="h1color text-center h1 font-weight-normal">#Votre Panier est vide</h2>
+            <h2 id="title" class="h1color text-center h1 font-weight-normal">#Votre panier est vide</h2>
         </section>
 
-        <section id="listPanier" class="flex-column align-items-center">
+        <!-- Notre liste de panier -->
+        <section id="listPanier" class="d-flex flex-column align-items-center">
         </section>
 
+        <section class="d-flex m-10 flex-wrap-reverse">
+            <div class="ml-auto">
+                <p class="h5 mb-4">Prix total de votre panier : </p>
+                <h2 id="prixTotalPanier" class="h1color text-right h1 font-weight-normal">0€</h2>
+            </div>
+        </section>
+
+        <!-- Formulaire de contact -->
         <section id="formPanier" class="justify-content-center col-12">
             <form class="text-center">
-                <p class="closePageCamP2 text-right mr-4"><span id="closePageCam">&times;</span></p>
                 <h1 class="text-center h1color font-weight-lighter mb-5">Formulaire de contact</h1>
                 <div class="divFormPanier form-group d-inline-flex flex-column mt-3 text-left">
                     <label for="InputNom" class="h5 h1color">Votre Nom :</label>
                     <input type="text" class="form-control w-280 inputform" id="InputNom" aria-describedby="InputNom"
-                        placeholder="Entrer votre nom" aria-label="Entrer votre nom" required>
-                    <span id="ErrorInputNom" class="h1color text-center errorinput"></span>
+                        placeholder="Entrer votre nom" aria-label="Entrer votre nom" minlength="2" pattern="^[a-zA-Z]+$"
+                        required>
 
                     <label for="InputPrenom" class="h5 h1color mt-4">Votre Prénom :</label>
                     <input type="text" class="form-control w-280 inputform" id="InputPrenom"
-                        aria-describedby="InputPrenom" placeholder="Entrer votre prénom" aria-label="Entrer votre prénom" required>
-                    <span id="ErrorInputPrenom" class="h1color text-center errorinput"></span>
+                        aria-describedby="InputPrenom" placeholder="Entrer votre prénom"
+                        aria-label="Entrer votre prénom" minlength="2" pattern="^[a-zA-Z]+$" required>
 
                     <label for="InputAdresse" class="h5 h1color mt-4">Votre Adresse :</label>
                     <input type="text" class="form-control w-280 inputform" id="InputAdresse"
-                        aria-describedby="InputAdresse" placeholder="Entrer votre adresse" aria-label="Entrer votre adresse" required>
-                    <span id="ErrorInputAdresse" class="h1color text-center errorinput"></span>
+                        aria-describedby="InputAdresse" placeholder="Entrer votre adresse"
+                        aria-label="Entrer votre adresse" minlength="10" pattern="^[a-zA-Z0-9]+$" required>
                 </div>
                 <div class="divFormPanier form-group d-inline-flex flex-column text-left">
                     <label for="InputVille" class="h5 h1color">Votre Ville :</label>
                     <input type="text" class="form-control w-280 inputform" id="InputVille"
-                        aria-describedby="InputVille" placeholder="Entrer votre ville" aria-label="Entrer votre ville" required>
-                    <span id="ErrorInputVille" class="h1color text-center errorinput"></span>
+                        aria-describedby="InputVille" placeholder="Entrer votre ville" aria-label="Entrer votre ville"
+                        minlength="3" pattern="^[a-zA-Z]+$" required>
 
                     <label for="InputEmail" class="h5 h1color mt-4">Votre Email :</label>
                     <input type="email" class="form-control w-280 inputform" id="InputEmail"
-                        aria-describedby="InputEmail" placeholder="Entrer votre email" aria-label="Entrer votre email" required>
-                    <span id="ErrorInputEmail" class="h1color text-center inputform"></span>
+                        aria-describedby="InputEmail" placeholder="Entrer votre email" aria-label="Entrer votre email"
+                        minlength="8" required>
                 </div>
                 <div class="divFormPanier custom-control custom-checkbox mb-3 mt-4">
                     <input type="checkbox" class="custom-control-input position-relative" id="InputCheck"
@@ -82,33 +90,25 @@
                 </div>
                 <div class="bg-oricono divOriconobtn">
                     <div class="bg-white divWhitebtn">
-                        <button type="button" id="formBtnCommander"
-                            class="btn bg-white h1color font-weight-bolder">Commander</button>
+                        <input type="submit" id="formBtnCommander" class="btn bg-white h1color font-weight-bolder"
+                            value="Commander" />
                     </div>
                 </div>
             </form>
         </section>
 
-        <section class="d-flex m-10 flex-wrap-reverse">
-            <h2 id="buttonCommander" class="h1color pointer h1 font-weight-normal"></h2>
-
-            <div class="ml-auto">
-                <p class="h5 mb-4">Prix total de votre panier : </p>
-                <h2 id="prixTotalPanier" class="h1color text-right h1 font-weight-normal">0€</h2>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
         <footer class="container mt-5">
             <p class="float-right h1color"><a href="#">Back to top</a></p>
             <p>&copy; 2020 Orinoco.</p>
         </footer>
     </main>
 
+    <!-- Lien JS bootstrap V4 -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
 
+    <!-- Lien JS bootstrap V4 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
