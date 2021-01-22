@@ -66,7 +66,6 @@ getListCamera().then(function (listCamera) {
     }
 
 }).catch(function () {
-    // Gestions des erreurs: affiche Error 404 et redirige le visiteur vers la page d'accueil à partir de 10s
+    // Gestions des erreurs: affiche Error 404
     document.querySelector('#listCam').innerHTML = '<h2 class=\"h1color text-center mb-5 h1 font-weight-normal\">Error 404</h2>';
-    setTimeout(function () { document.location.href = "../index.html" }, 10000);
 });

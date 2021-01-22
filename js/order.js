@@ -34,7 +34,7 @@ let priceOrder = localStorage.getItem('priceOrder');
 postOrder(dataOrder).then(function (order) {
     // Affichage du numéro de commende renvoyer par le serveur et un remerciement au client
     document.querySelector('#orderId').innerHTML = "#" + order.orderId;
-    document.querySelector('#orderPrice').innerHTML = "Merci de votre commande de " + priceOrder + ",<br/>à très bien tôt chez Oricono.";
+    document.querySelector('#orderPrice').innerHTML = "Merci de votre commande de " + priceOrder + ",<br/>a très bientôt chez Oricono.";
     // Effaçage de toutes les données de localStorage
     localStorage.clear();
 }).catch(function () {
