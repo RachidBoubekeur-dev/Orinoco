@@ -50,6 +50,14 @@
     transition: all 0.6s;
 }
 
+#listCam {
+    transition: all 0.6s;
+}
+
+#listCam {
+    transition: all 0.6s;
+}
+
 .camera {
     cursor: pointer;
     transition: all 0.5s;

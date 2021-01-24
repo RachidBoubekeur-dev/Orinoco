@@ -49,7 +49,7 @@ getListCamera().then(function (listCamera) {
 
         // Ajout successif des caméras dans listCameraHtml
         listCameraHtml += "<div class=\"col mb-5\"><figure id=\"" + listCamera[i]._id + "\" class=\"camera card\"><div class=\"prixcard\"><span>" + newPrice + "€</span></div><img src=\"" + listCamera[i].imageUrl + "\" class=\"card-img-top\" alt=\"Caméra " + listCamera[i].name + "\"><figcaption class=\"card-body\"><h5 class=\"card-title\">" + listCamera[i].name + "</h5><span class=\"h1color\">Voir la description</span></figcaption></figure></div>";
-    };
+    }
 
     document.querySelector('#listCam').innerHTML = listCameraHtml;
 
