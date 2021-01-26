@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../bootstrap.css" />
+    <script async src="https://kit.fontawesome.com/23eb318271.js" crossorigin="anonymous"></script>
+    <script async src="../js/product.js"></script>
+    <title>Produit - Orinoco</title>
+</head>
+
+<body>
+    <header>
+        <div class="navbar navbar-expand-md navbar-dark bg-oricono">
+            <a class="navbar-brand font-weight-normal h1 ml-2" href="../index.html">Orinoco</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="../index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="panier.html">Panier</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+
+        <section class="m-10">
+            <h2 id="title" class="h1color text-center h1 font-weight-normal">#Description du produit</h2>
+        </section>
+
+        <!-- Fiche du produit sélectionner -->
+        <section id="pageCam" class="card text-center">
+            <div class="card text-md-left">
+                <div class="row no-gutters">
+                    <div class="col-md-5 d-flex align-items-center">
+                        <img id="imageCam" src="" class="card-img" alt="">
+                    </div>
+                    <div class="col-md-7 pl-3">
+                        <div class="card-body">
+                            <h2 id="nameCam" class="card-title mb-5 mt-4 h1color h1 font-weight-normal"></h2>
+                            <h4 id="descriptionCam" class="card-text font-weight-light mb-5"></h4>
+                            <span class="card-text"><i class="fas fa-check h1color"></i> Livraison en 12-15 jours
+                                ouvrables</span><br />
+                            <span class="card-text"><i class="fas fa-check h1color"></i> Livraison Gratuite et Garantie
+                                14 jours Satisfait ou Remboursé</span><br />
+                            <span class="card-text"><i class="fas fa-check h1color"></i> Inclus 2 ans de Garantie
+                                France</span><br />
+                            <span class="card-text"><i class="fas fa-check h1color"></i> En stock</span>
+                            <div class="d-md-flex align-items-center mt-5 mb-md-5">
+                                <h2 id="priceCam"
+                                    class="card-text h1color mb-4 mb-md-0 mr-md-auto h1 font-weight-normal"></h2>
+                                <div class="input-group ml-1 mb-5 mb-md-0 w-auto">
+                                    <select id="lensesCam" class="custom-select" aria-describedby="lensesCam"
+                                        aria-label="Choisissez votre lentille">
+                                        <option selected>Lentilles...</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <label class="input-group-text bg-oricono text-white"
+                                            for="lensesCam">Options</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-md-flex align-items-center mt-md-5 mb-5">
+                                <input id="quantityCam" aria-describedby="quantityCam"
+                                    aria-label="Choisissez le nombre de caméra à ajouter dans votre panier"
+                                    class="form-control mb-3 mb-md-0 mls-md-3 mt-4" type="number" value="1" min="1"
+                                    max="10" />
+                                <button class="btn bg-oricono text-white ml-auto mr-3 mt-3 ajoutPanier"
+                                    type="button">Ajoutez au panier</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bulle d'information de l'article et du nombre, apparaît lorsque l'article est ajouter au panier -->
+        <div id="infoPanier"
+            class="card fixed-bottom text-right ml-sm-1 ml-md-3 mb-3 col-sm-10 col-md-6 col-lg-5 col-xl-3">
+            <a href="panier.html" class="text-decoration-none text-white">
+                <div class="card-body pl-0 pr-0">
+                    <span id="closeInfoPanier" class="mr-2 d-none d-md-inline-block">&times;</span>
+                    <p id="textInfoPanier" class="card-title text-center"></p>
+                </div>
+            </a>
+        </div>
+
+        <footer class="container mt-5">
+            <p class="float-right h1color"><a href="#">Back to top</a></p>
+            <p>&copy; 2021 Orinoco.</p>
+        </footer>
+    </main>
+
+    <!-- Lien JS bootstrap V4 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <!-- Lien JS bootstrap V4 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
