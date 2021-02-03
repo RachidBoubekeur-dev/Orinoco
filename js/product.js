@@ -1,32 +1,5 @@
-let getXhr = function (url) {
-    return new Promise(function (resolve, reject) {
-
-        let xhr = new XMLHttpRequest();
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    resolve(xhr.responseText);
-                } else {
-                    reject(xhr);
-                }
-            }
-        }
-
-        xhr.open('GET', url);
-        xhr.send();
-    });
-};
-
-// Demande les infos de la caméras
-let getCamera = function (id) {
-    return getXhr('http://localhost:3000/api/cameras/' + id).then(function (response) {
-        let camera = JSON.parse(response);
-        return camera;
-    });
-};
-
-let getIdCam = localStorage.getItem('click Camera');
+let urlCamera = new URLSearchParams(document.location.href);
+let getIdCam = urlCamera.get("Camera");
 
 getCamera(getIdCam).then(function (camera) {
 
@@ -61,17 +34,21 @@ getCamera(getIdCam).then(function (camera) {
     ajoutPanier.addEventListener('click', function () {
         // Action lorsque l'élément est ajouter au panier
         let optionCam = document.querySelector("#lensesCam").value;
-        // Ajout de l'id et de la lentille sélectionner dans le localStorage répétition en fonction de la quantité désirée
-        for (let i = 0; i < quantityCam.value; i++) {
-            let numberPanier = "Panier " + localStorage.length;
-            let lensesPanier = "Lense " + camera._id;
-            localStorage.setItem(numberPanier, camera._id);
-            localStorage.setItem(lensesPanier, optionCam);
-        }
-
         let infoPanier = document.querySelector("#infoPanier");
         let closeInfoPanier = document.querySelector("#closeInfoPanier");
         let textInfoPanier = document.querySelector("#textInfoPanier");
+
+        // Ajout de la caméra dans le localStorage
+        let cameraOrder = new Object();
+        cameraOrder.id = camera._id;
+        cameraOrder.name = camera.name;
+        cameraOrder.price = camera.price;
+        cameraOrder.imageUrl = camera.imageUrl;
+        cameraOrder.lense = optionCam;
+        cameraOrder.number = quantityCam.value;
+
+        let PanierId = "Panier " + camera._id;
+        localStorage.setItem(PanierId, JSON.stringify(cameraOrder));
 
         // Affichage de la quantité si plusieur et/ou de l'article ajouter au panier
         if (quantityCam.value > 1) {

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../bootstrap.css" />
     <script async src="https://kit.fontawesome.com/23eb318271.js" crossorigin="anonymous"></script>
+    <script async src="../js/xhr.js"></script>
     <script async src="../js/panier.js"></script>
     <title>Panier - Orinoco</title>
 </head>
@@ -55,38 +56,44 @@
                 <div class="divFormPanier form-group d-inline-flex flex-column mt-3 text-left">
                     <label for="InputNom" class="h5 h1color">Votre Nom :</label>
                     <input type="text" class="form-control w-280 inputform" id="InputNom" aria-describedby="InputNom"
-                        placeholder="Entrer votre nom" aria-label="Entrer votre nom" minlength="2" pattern="^[a-zA-Z]+$"
-                        required>
+                        placeholder="Entrer votre nom" aria-label="Entrer votre nom" minlength="2" pattern="^[a-z ,.'-éèàâêûîôäëüïöù][^0-9]+$"
+                        required />
+                    <span id="ErrorInputNom" class="h1color text-center errorinput"></span>
 
                     <label for="InputPrenom" class="h5 h1color mt-4">Votre Prénom :</label>
                     <input type="text" class="form-control w-280 inputform" id="InputPrenom"
                         aria-describedby="InputPrenom" placeholder="Entrer votre prénom"
-                        aria-label="Entrer votre prénom" minlength="2" pattern="^[a-zA-Z]+$" required>
+                        aria-label="Entrer votre prénom" minlength="2" pattern="^[a-z ,.'-éèàâêûîôäëüïöù][^0-9]+$" required />
+                    <span id="ErrorInputPrenom" class="h1color text-center errorinput"></span>
 
                     <label for="InputAdresse" class="h5 h1color mt-4">Votre Adresse :</label>
                     <input type="text" class="form-control w-280 inputform" id="InputAdresse"
                         aria-describedby="InputAdresse" placeholder="Entrer votre adresse"
-                        aria-label="Entrer votre adresse" minlength="10" pattern="^[a-zA-Z0-9]+$" required>
+                        aria-label="Entrer votre adresse" minlength="10" pattern="^[a-z ,.'-éèàâêûîôäëüïöù]+$" required />
+                    <span id="ErrorInputAdresse" class="h1color text-center errorinput"></span>
                 </div>
                 <div class="divFormPanier form-group d-inline-flex flex-column text-left">
                     <label for="InputVille" class="h5 h1color">Votre Ville :</label>
                     <input type="text" class="form-control w-280 inputform" id="InputVille"
                         aria-describedby="InputVille" placeholder="Entrer votre ville" aria-label="Entrer votre ville"
-                        minlength="3" pattern="^[a-zA-Z]+$" required>
+                        minlength="3" pattern="^[a-z ,.'-éèàâêûîôäëüïöù][^0-9]+$" required />
+                    <span id="ErrorInputVille" class="h1color text-center errorinput"></span>
 
                     <label for="InputEmail" class="h5 h1color mt-4">Votre Email :</label>
                     <input type="email" class="form-control w-280 inputform" id="InputEmail"
                         aria-describedby="InputEmail" placeholder="Entrer votre email" aria-label="Entrer votre email"
-                        minlength="8" required>
+                        minlength="8" required />
+                    <span id="ErrorInputEmail" class="h1color text-center errorinput"></span>
                 </div>
                 <div class="divFormPanier custom-control custom-checkbox mb-3 mt-4">
                     <input type="checkbox" class="custom-control-input position-relative" id="InputCheck"
                         aria-describedby="InputCheck" aria-label="Accepter les
                         conditions générales de
-                        vente" required>
+                        vente" required />
                     <label for="InputCheck" class="custom-control-label h1color font-weight-bolder">J'accepter les
                         conditions générales de
                         vente</label>
+                    <span id="ErrorInputCheck" class="h1color text-center errorinput"></span>
                 </div>
                 <div class="bg-oricono divOriconobtn">
                     <div class="bg-white divWhitebtn">
