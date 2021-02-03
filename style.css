@@ -195,6 +195,10 @@
     border: 1px solid purple !important;
 }
 
+.errorinput {
+    display: none;
+}
+
 @keyframes effetOricono {
     0% {
         background:  #e27c29;
