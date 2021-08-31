@@ -1,15 +1,39 @@
-# Orinoco #
+# Orinoco
 
-This is the back end server for Project 5 of the Junior Web Developer path.
+## 1. General information
 
-### Prerequisites ###
+Orinoco is project 5 of the OpenClassrooms training course of the web developers course.  
+The project consists of creating a first MVP to demonstrate the functioning of its applications to investors.
 
-You will need to have Node and `npm` installed locally on your machine.
+## 2. Skills assessed
 
-### Installation ###
+✔️ Create a test plan for an application.
 
-Clone this repo. From within the project folder, run `npm install`. You 
-can then run the server with `node server`. 
-The server should run on `localhost` with default port `3000`. If the
-server runs on another port for any reason, this is printed to the
-console when the server starts, e.g. `Listening on port 3001`.
+✔️ Interact with a web service using JavaScript.
+
+✔️ Validate data from external sources.
+
+✔️ Manage JavaScript events.
+
+## 3. Project
+
+### 3.1 This project uses:
+
+-   [NodeJS](https://nodejs.org/en/)
+-   [bcrypt](https://www.npmjs.com/package/bcrypt)
+-   [body-parser](https://www.npmjs.com/package/body-parser)
+-   [express](https://expressjs.com/fr/)
+-   [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+-   [mongoose](https://mongoosejs.com/)
+-   [mongoose-unique-validator](https://www.npmjs.com/package/mongoose-unique-validator)
+-   [uuid](https://www.npmjs.com/package/uuid)
+
+### 3.2 Launching the project
+
+1. To start, you will need to `git clone` the project on your machine via a command in your terminal: `git clone https://github.com/RachidBoubekeur-dev/Orinoco.git`.
+
+2. Still in your terminal, go to the newly created folder Orinoco.
+
+3. In this folder, install the packages necessary for the proper functioning of the project via the `npm install` command.
+
+4. In the main folder once all the dependencies are installed launch the server with  `node server`.
